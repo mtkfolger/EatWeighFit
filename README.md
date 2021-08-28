@@ -6,10 +6,15 @@
 
 **Table of Contents** 
 >[Installation](#Installation)
+>
 >[Usage](#Usage)
+>
 >[License](#License)
+
 >[Contribution Guidelines](#Contribution)
+
 >[Tests](#Tests)
+
 >[Questions](#Questions)
 
 **Installation Instructions** <a name="Installation"></a>
