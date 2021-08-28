@@ -5,12 +5,12 @@
 >This appliaction will track a users current weight, weight loss and fitness goals, and workout activities. It will be an oragnized, convenient way for users to log in and track progress as they start their journey to Eat, Weigh, Fit!
 
 **Table of Contents** 
-[Installation](#Installation)
-[Usage](#Usage)
-[License](#License)
-[Contribution Guidelines](#Contribution)
-[Tests](#Tests)
-[Questions](#Questions)
+>[Installation](#Installation)
+>[Usage](#Usage)
+>[License](#License)
+>[Contribution Guidelines](#Contribution)
+>[Tests](#Tests)
+>[Questions](#Questions)
 
 **Installation Instructions** <a name="Installation"></a>
 >To run this application, simply visit www.eatweighfit.com
