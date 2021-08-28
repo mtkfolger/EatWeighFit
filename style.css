@@ -1,0 +1,71 @@
+*{
+    color: black;
+
+}
+
+.h1 {
+    color: black;
+    padding-bottom: 2em;
+    margin-top: 10em;
+
+}
+
+.custom-h1-class {
+    color: black;
+    margin-bottom: 3em;
+}
+
+.p{
+    color:black;
+    width: 100%;
+    opacity: 75%;
+    margin-bottom: 1.5em;
+
+}
+
+.button{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: ba;
+    background-color: rgba(228, 176, 97, 0.842);
+    margin-left: 23.5em;
+    margin-bottom: .8em;
+    padding: 1em;
+    padding-left: .5em;
+    padding-right: .5em;
+    font-size: medium;
+    font-weight: bolder;
+    opacity: 100%;
+    width: 8vw;
+    border-radius: 30%;
+}
+
+.custom-card-class {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    opacity: 85%;
+    width: 50%;
+    height: 30%;
+    color: black;
+    background-color: black;
+    font-size: larger;
+    text-align: center;
+    justify-content: center;
+    padding-top: 2%;
+    margin-right: 0%;
+    margin-left: 25%;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+.uk-card-title{
+    margin-top: 0%
+}
+
+.footer{
+    color: white;
+    font-weight: bolder;
+}
