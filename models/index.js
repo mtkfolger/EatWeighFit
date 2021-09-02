@@ -6,16 +6,38 @@ const Meal = require('./Meal');
 const Weight = require('./Weight');
 
 
-Meal.hasMany(Eat, {
-    foreignKey: 'meal_id',
+Meal.belongsToMany(User, {
+    through: {
+        model: Eat,
+        unique: false
+    },
 });
 
-Meal.belongsTo(Eat, {
-    foreignKey: 'meal_id',
+User.belongsToMany(Meal, {
+    through: {
+        model: Eat,
+        unique: false
+    },
 });
 
-Eat.belongsTo(User, {
-    foreignKey: 'user_id',
+
+Goals.belongsToMany(User, {
+    through: {
+        model: Weight,
+        unique: false
+    },
 });
 
-module.exports = { User, Eat, Fit, Goals, };
+User.belongsToMany(Goals, {
+    through: {
+        model: Weight,
+        unique: false
+    },
+});
+
+Fit.belongsTo(User, {
+    foreignKey: 'User_id',
+});
+
+
+module.exports = { User, Eat, Fit, Goals, Weight, Meal, };
