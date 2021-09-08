@@ -21,10 +21,10 @@
 >To run this application, simply visit www.eatweighfit.com
 
 **Group Member Responsibilities/Tasks**
-Alyssa: 
-Cierra: 
-Austin:
-Michael F:
+Alyssa: Routes, Helpers
+Austin: Models, Creating Tables
+Cierra: Routes, Helpers
+Michael F: Handlebars.js
 
 **Usage** <a name="Usage"></a>
 >Any person interested in setting and tracking fitness and/or weight loss goals can benefit from the unbelieveable potential of Eat, Weigh, Fit!
