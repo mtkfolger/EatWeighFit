@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const fitRoutes = require('./fitRoutes');
 const userRoutes = require('./userRoutes');
-const eatRoutes = require('');
-const weighRoutes = require('');
+const weighRoutes = require('./weightRoutes');
 
 router.use('/users', userRoutes);
 router.use('/fit', fitRoutes);

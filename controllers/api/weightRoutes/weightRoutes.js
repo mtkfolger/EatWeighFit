@@ -1,0 +1,82 @@
+const router = require('express').Router();
+const { Weight, User } = require('../../../models');
+const withAuth = require('../../../utils');
+
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const weighData = await Weight.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+            ],
+        });
+
+        const weight = weighData.map((weigh) => weigh.get({ plain: true }));
+
+        res.render('weigh', {
+            weight, 
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/:id', withAuth, async (req, res) => {
+    try {
+        const weighData = await Weight.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+            ],
+        });
+
+        const weight = weighData.get({ plain: true });
+
+        res.render('weigh', {
+            ...weight,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.post('/', withAuth, async (req, res) => {
+    try {
+        const newWeight = await Weight.create({
+            ...req.body,
+            user_id:req.session.user_id,
+        });
+
+        res.status(200).json(newWeight);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+        const weighData = await Weight.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
+
+        if (!weighData) {
+            res.status(404).json({ message: 'No weight found with this id!' });
+            return;
+        }
+
+        res.status(200).json(weighData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+module.exports = router;
