@@ -3,6 +3,7 @@ const { Fit } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
+    console.log("")
     try {
         const fitData = await Fit.findAll({
             attributes: { exclude: ['user_id'] },
@@ -11,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
 
         const fitness = fitData.map((workout) => workout.get({ plain: true }));
 
-        res.render('fit', { fitness });
+        res.json(fitness);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -26,10 +27,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
         const fitness = newFit.get({ plain: true });
 
-        res.render('fit', {
-            ...fitness,
-            logged_in: req.session.logged_in
-        });
+        res.json(fitness);
     } catch (err) {
         res.json(500).json(err);
     }

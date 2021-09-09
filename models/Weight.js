@@ -11,12 +11,12 @@ Weight.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    Weight: {
+    weight: {
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
     age: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     height: {
@@ -26,6 +26,7 @@ Weight.init(
     current_date: {
         type: DataTypes.DATE,
         allowNull: false,
+        defaultValue: DataTypes.NOW,
     },
     user_id: {
         type: DataTypes.INTEGER,
@@ -39,7 +40,7 @@ Weight.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: "goals",
+            model: "goal",
             key: "id",
         }
     },

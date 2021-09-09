@@ -24,18 +24,19 @@ Fit.init(
         allowNull: false,
       },
     calories_burned: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     current_date: {
         type: DataTypes.DATE,
         allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: "User",
+            model: "user",
             key: "id",
         }
       },

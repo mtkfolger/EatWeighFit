@@ -16,7 +16,7 @@ Eat.init(
             allowNull: false,
         },
         calories: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         meal_id: {
@@ -31,7 +31,7 @@ Eat.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "User",
+                model: "user",
                 key: "id",
             }
         },

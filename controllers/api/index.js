@@ -5,7 +5,7 @@ const weighRoutes = require('./weightRoutes');
 
 router.use('/users', userRoutes);
 router.use('/fit', fitRoutes);
-router.use('/eat', eatRoutes);
+// router.use('/eat', eatRoutes);
 router.use('/weigh', weighRoutes);
 
 module.exports = router;

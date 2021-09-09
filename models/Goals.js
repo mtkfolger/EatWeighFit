@@ -11,7 +11,7 @@ Goals.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    target_wieght: {
+    target_weight: {
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ Goals.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'goals',
+    modelName: 'goal',
   }
 );
 

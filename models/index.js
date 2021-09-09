@@ -35,7 +35,7 @@ User.belongsToMany(Goals, {
 });
 
 Fit.belongsTo(User, {
-    foreignKey: 'User_id',
+    foreignKey: 'user_id',
 });
 
-module.exports = { User, Eat, Fit, Goals, Weight, Meal, };
+module.exports = { User, Eat, Fit, Goals, Weight, Meal };
