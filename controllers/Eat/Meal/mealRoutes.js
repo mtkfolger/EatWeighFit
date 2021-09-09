@@ -3,15 +3,9 @@
 // get method
 // delete method
 const router = require('express').Router();
-<<<<<<< Updated upstream
 const { route } = require('.');
-const { Meal } = require('../../models');
-const withAuth = require('../../utils/auth');
-=======
-const { route } = require('../Eat/Meal');
 const { Meal } = require('../../../models');
 const withAuth = require('../../../utils/auth');
->>>>>>> Stashed changes
 // const eat_controller = require('../eat/post-eat')
 
 // GET route
