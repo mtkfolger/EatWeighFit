@@ -1,10 +1,7 @@
 const router = require('express').Router();
-const meal = require('.');
-const withAuth = require('../../utils/auth');
+const mealRoutes = require('../Meal');
 
-router.use('/', meal);
-router.use('/', )
+router.use('/', mealRoutes);
+
 
 module.exports = router
-
-// send eat file to login in page if user not logged in

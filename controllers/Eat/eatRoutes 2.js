@@ -1,30 +1,24 @@
-// needs post method 
-// put method 
-// get method
-// delete method
 const router = require('express').Router();
-const { route } = require('.');
-const { Meal } = require('../../../models');
-const withAuth = require('../../../utils/auth');
-// const eat_controller = require('../eat/post-eat')
+const { Eat, Meal, User } = require('../../EatWeighFit/models')
+const withAuth = require('../../utils/auth');
+// const meal_controller = require('../meals/post-meals')
 
-// GET route
 router.get('/', async (req, res) => {
     try {
-        const mealData = await meal.findAll();
-        res.status(200).json(mealData);
+        const EatData = await Eat.findAll();
+        res.status(200).json(eatData);
     } catch (err) {
         res.status(500).json(err);
     }
 })
 router.post('/', withAuth, async (req, res) => {
     try {
-        const newMeal = await Meal.create({
+        const newEat = await Eat.create({
             ...req.body,
             user_id: req.session.user_id,
         });
 
-        res.status(200).json(newMeal);
+        res.status(200).json(newEat);
     } catch (err) {
         res.status(400).json(err);
     }
@@ -32,16 +26,15 @@ router.post('/', withAuth, async (req, res) => {
 
 router.delete('/', withAuth, async (req, res) => {
     try {
-        const newMeal = await Meal.destroy({
+        const newEat = await Eat.destroy({
             where:{
                 id: req.params.id
         }
     })
-    res.status(200).end(newMeal);
+    res.status(200).end(newEat);
     }catch (err) {
         res.status(400).json(err);
     }
 })
 
 module.exports = router
-
