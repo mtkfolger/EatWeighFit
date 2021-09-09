@@ -3,7 +3,7 @@
 // get method
 // delete method
 const router = require('express').Router();
-const { route } = require('.');
+const { route } = require('../Eat/Meal');
 const { Meal } = require('../../models');
 const withAuth = require('../../utils/auth');
 // const eat_controller = require('../eat/post-eat')
