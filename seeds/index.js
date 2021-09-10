@@ -9,15 +9,15 @@ const seedweight = require('./weightdata');
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
+  await seeduser();
+
+  await seedmeal();
+
   await seedeat();
 
   await seedfit();
 
   await seedgoals();
-
-  await seedmeal();
-
-  await seeduser();
 
   await seedweight();
 
