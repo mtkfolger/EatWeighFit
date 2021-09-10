@@ -36,7 +36,7 @@ Weight.init(
             key: "id",
         }
     },
-    goals_id: {
+    goal_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {

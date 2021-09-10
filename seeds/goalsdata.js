@@ -1,6 +1,6 @@
-const {Goals} = require ("../models");
+const {Goal} = require ("../models");
 
-const goalsdata = [{
+const goaldata = [{
     "target_weight": 125.5,
     "target_date": "5/6/2022",
     "current_body_type": "dad body",
@@ -19,6 +19,6 @@ const goalsdata = [{
     "ideal_body_type": "normal",
   }];
 
-const seedGoals = () => Goals.bulkCreate(goalsdata);
+const seedGoal = () => Goal.bulkCreate(goaldata);
 
-module.exports = seedGoals;
+module.exports = seedGoal;

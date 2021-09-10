@@ -5,7 +5,7 @@ const weightdata = [{
     "age": 45,
     "height": 80,
     "user_id": 1,
-    "goals_id": 1,
+    "goal_id": 1,
   }];
 
 const seedweight = () => Weight.bulkCreate(weightdata);

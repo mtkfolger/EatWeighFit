@@ -1,27 +1,29 @@
 const router = require('express').Router();
-const { Weight, User } = require('../../../models');
+const { Weight, User, Goal } = require('../../../models');
 const withAuth = require('../../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
-    try {
+    // try {
         const weighData = await Weight.findAll({
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    
                 },
+                {
+                    model: Goal,
+                    attributes: ['target_weight', 'target_date', 'current_body_type', 'ideal_body_type']
+                    
+                }
             ],
         });
 
         const weight = weighData.map((weigh) => weigh.get({ plain: true }));
 
-        res.render('weigh', {
-            weight, 
-            logged_in: req.session.logged_in
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+        res.json(weight);
+    // } catch (err) {
+    //     res.status(500).json(err);
+    // }
 });
 
 router.get('/:id', withAuth, async (req, res) => {
@@ -37,10 +39,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
         const weight = weighData.get({ plain: true });
 
-        res.render('weigh', {
-            ...weight,
-            logged_in: req.session.logged_in
-        });
+        res.json(weight);
     } catch (err) {
         res.status(500).json(err);
     }
