@@ -1,10 +1,22 @@
 const router = require('express').Router();
-const { Eat, Meal, User } = require('../../models');
-const withAuth = require('../../utils/auth');
+const { Eat, Meal, User } = require('../../../models');
+const withAuth = require('../../../utils/auth');
+
 
 router.get('/', async (req, res) => {
     try {
-        const EatData = await Eat.findAll();
+        const eatData = await Eat.findAll({
+            include: [
+                {
+                    model: User,
+                    
+                },
+                {
+                    model: Meal,
+                    
+                }
+            ],
+        });
         res.status(200).json(eatData);
     } catch (err) {
         res.status(500).json(err);
@@ -15,6 +27,7 @@ router.post('/', withAuth, async (req, res) => {
         const newEat = await Eat.create({
             ...req.body,
             user_id: req.session.user_id,
+        
         });
 
         res.status(200).json(newEat);

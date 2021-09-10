@@ -1,17 +1,10 @@
-// needs post method 
-// put method 
-// get method
-// delete method
 const router = require('express').Router();
-const { route } = require('../Eat/Meal');
-const { Meal } = require('../../models');
-const withAuth = require('../../utils/auth');
-// const eat_controller = require('../eat/post-eat')
+const { Meal } = require('../../../../models');
+const withAuth = require('../../../../utils/auth');
 
-// GET route
 router.get('/', async (req, res) => {
     try {
-        const mealData = await meal.findAll();
+        const mealData = await Meal.findAll();
         res.status(200).json(mealData);
     } catch (err) {
         res.status(500).json(err);

@@ -1,11 +1,60 @@
 const router = require('express').Router();
-const { Weight, Goal, User } = require('../../../models');
+const { Goal } = require('../../../models');
 const withAuth = require('../../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
     try {
-        // const goalData = await Goal.
+        const goalData = await Goal.findAll();
+
+        const goal = goalData.map((goals) => goals.get({ plain: true }));
+
+        res.json(goal);
     } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/:id', withAuth, async (req, res) => {
+    try {
+        const goalData = await Goal.findByPk(req.params.id);
+
+        const goal = goalData.get({ plain: true });
+
+        res.json(goal);
+    } catch(err) {
+        res.status(500).json(err);
+    }
+});
+
+router.post('/', withAuth, async (req, res) => {
+    try {
+        const newGoal = await Goal.create({
+            ...req.body,
+            user_id:req.session.user_id
+        });
+
+        res.status(200).json(newGoal);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+        const goalData = await Goal.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
+
+        if (!goalData) {
+            res.status(404).json({ message: 'No goal found with this id!' });
+            return;
+        }
+
+        res.status(200).json(goalData);
+    } catch(err) {
         res.status(500).json(err);
     }
 });
