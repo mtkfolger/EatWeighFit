@@ -1,6 +1,8 @@
 const {Meal} = require ("../models");
 
-const mealdata = [];
+const mealdata = [{
+    "meal_type": "Fruit",
+  }];
 
 const seedMeal = () => Meal.bulkCreate(mealdata);
 

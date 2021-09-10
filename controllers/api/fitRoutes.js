@@ -2,10 +2,17 @@ const router = require('express').Router();
 const { Fit } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
+    console.log("")
     try {
-        const fitData = await Fit.findAll();
-        res.status(200).json(fitData);
+        const fitData = await Fit.findAll({
+            attributes: { exclude: ['user_id'] },
+            order: [['current_date', 'ASC']],
+        });
+
+        const fitness = fitData.map((workout) => workout.get({ plain: true }));
+
+        res.json(fitness);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -13,15 +20,21 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', withAuth, async (req, res) => {
     try {
-        const newFit = await Fit.findByPk(req.params.id);
+        const newFit = await Fit.findByPk(req.params.id, {
+            attributes: { exclude: ['user_id'] },
+            order: [['current_date', 'ASC']],
+        });
 
-        res.status(200).json(newFit);
+        const fitness = newFit.get({ plain: true });
+
+        res.json(fitness);
     } catch (err) {
         res.json(500).json(err);
     }
 });
 
 router.post('/', withAuth, async (req, res) => {
+
     try {
         const newFit = await Fit.create({
             ...req.body,

@@ -14,6 +14,7 @@ Meal.init(
     current_date: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     meal_type: {
       type: DataTypes.STRING,
