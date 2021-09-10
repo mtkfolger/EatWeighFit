@@ -23,7 +23,7 @@ Eat.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "meal",
+                model: "Meal",
                 key: "id",
             }
         },

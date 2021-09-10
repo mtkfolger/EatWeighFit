@@ -25,7 +25,7 @@ Meal.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'meal',
+    modelName: 'Meal',
   }
 );
 
