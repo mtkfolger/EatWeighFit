@@ -3,17 +3,15 @@ const { Weight, User, Goal } = require('../../../models');
 const withAuth = require('../../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
-    // try {
+    try {
         const weighData = await Weight.findAll({
             include: [
                 {
-                    model: User,
-                    
+                    model: User,  
                 },
                 {
                     model: Goal,
                     attributes: ['target_weight', 'target_date', 'current_body_type', 'ideal_body_type']
-                    
                 }
             ],
         });
@@ -21,9 +19,9 @@ router.get('/', withAuth, async (req, res) => {
         const weight = weighData.map((weigh) => weigh.get({ plain: true }));
 
         res.json(weight);
-    // } catch (err) {
-    //     res.status(500).json(err);
-    // }
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.get('/:id', withAuth, async (req, res) => {

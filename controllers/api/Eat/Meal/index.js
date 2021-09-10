@@ -1,9 +1,7 @@
 const router = require('express').Router();
-const meal = require('.');
-const withAuth = require('../../utils/auth');
+const meal = require('./mealRoutes');
 
 router.use('/', meal);
-router.use('/', )
 
 module.exports = router
 
