@@ -20,4 +20,4 @@ const newFormHandler = async (event) => {
     }
   };
 
-  document.querySelector('.logWeightBtn').addEventListener('submit', newFormHandler);
+  document.querySelector('.logWeightBtn').addEventListener('click', newFormHandler);

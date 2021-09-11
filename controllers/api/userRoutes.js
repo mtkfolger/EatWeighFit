@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Weight, Goal } = require('../../models');
 
 router.post('/signup', async (req, res) => {
+    console.log('POST SIGNUP')
     try {
         const userData = await User.create({
             name: req.body.name,
@@ -36,6 +37,7 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+    console.log('POST LOGIN')
     try {
         const userData = await User.findOne({ where: {email: req.body.email }});
 
