@@ -41,7 +41,7 @@ router.get('/signup', (req,res) => {
 });
 
 router.get('/weigh', withAuth, async (req, res) => {
-    console.log('WEIGH TEST')
+
     try {
         const weighData = await Weight.findAll({
             include: [
@@ -57,7 +57,6 @@ router.get('/weigh', withAuth, async (req, res) => {
         });
 
         const weights = weighData.map((weigh) => weigh.get({ plain: true }));
-        console.log(weights)
         res.render('weigh', {
             weights,
             logged_in: req.session.logged_in
@@ -75,7 +74,6 @@ router.get('/fit', withAuth, async (req, res) => {
         });
 
         const fitness = fitData.map((fit) => fit.get({ plain: true }));
-        console.log(fitness);
         res.render('fit', {
             fitness,
             logged_in:true
@@ -101,7 +99,6 @@ router.get('/eat', async (req, res) => {
         });
         
         const eat = eatData.map((newEat) => newEat.get({ plain: true }));
-        console.log(eat);
 
         res.render('eat', {
             eat,

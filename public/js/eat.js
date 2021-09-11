@@ -1,6 +1,7 @@
 
 
-create createEat = async (event) => {
+const createEat = async (event) => {
+  console.log("working")
     event.preventDefault();
 
     const food_name= document.querySelector('#foodinput').value;
@@ -21,5 +22,5 @@ create createEat = async (event) => {
   }
 }
 
-  
-  document.querySelector('.newEat').addEventListener('click', createEat);
+  const eatBtn = document.querySelector('#eatButton');
+  eatBtn.addEventListener('click', createEat);
