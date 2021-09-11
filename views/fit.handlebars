@@ -24,9 +24,23 @@
     
 
 <!-- table will populate here with the food information you've added -->
-        {{{Fit}}}
+
+
+
 <!-- login/signup buttons --> 
-<button class="uk-button uk-button-text" target="#"> ⇨ Track Fitness</button>
+<button class="uk-button uk-button-text fitness-btn" target="#"> ⇨ Track Fitness</button>
+<br>
+{{#each fitness}}
+
+{{{workout_type}}}
+<br>
+{{{longitude}}}
+<br>
+{{{latitude}}}
+<br>
+{{{calories_burned}}}
+
+{{/each}}
 
     </div>
 </div>

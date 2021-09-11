@@ -1,17 +1,17 @@
-const ukButton = document.querySelector('.uk-button');
 
-ukButton.addEventListener('click', createFit);
+const createFit = async (event) => {
+    event.preventDefault();
 
-function createFit(event) {
-    const typeOfFitness = document.querySelector('#fitness').value;
+    const workout_type = document.querySelector('#fitness-option').value;
 
     const latitude = 40.6782;
     const longitude = 73.9442;
-    const caloriesBurned = 500;
-    if (typeOfFitness) {
+    const calories_burned = 500;
+
+    if (workout_type && latitude && longitude && calories_burned) {
         const response = await fetch('/api/fit', {
             method: 'POST',
-            body: JSON.stringify({ typeOfFitness, latitude, longitude, caloriesBurned }),
+            body: JSON.stringify({ workout_type, latitude, longitude, calories_burned }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -23,3 +23,8 @@ function createFit(event) {
         }
    
 } 
+}
+
+const ukButton = document.querySelector('.fitness-btn');
+
+ukButton.addEventListener('click', createFit);

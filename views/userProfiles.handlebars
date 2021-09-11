@@ -4,23 +4,23 @@
 <div>
     <br>
     <br>
-    
+    {{#each user}}
     <div class="uk-card uk-card-secondary uk-card-body custom-card-class">
-        <h1><!-- Insert User's Name Here--> {{{user.name}}} 's Profile</h1>
+        <h1>{{{user.name}}} 's Profile</h1>
         <h3 class="h4"> 
             <em>Your Stats</em>
         </h3>
 
         <h3 class="h4"> 
-            Height: {{{weight.height}}}
+            Height: {{{height}}}
         </h3>
 
         <h3 class="h4"> 
-            Weight: {{{weight.weight}}}
+            Weight: {{{weight}}}
         </h3>
 
         <h3 class="h4"> 
-            Age: {{{weight.age}}}
+            Age: {{{age}}}
         </h3>
 
 
@@ -37,5 +37,6 @@
         </h3>
 
     </div>
+{{/each}}
 </div>
 </div>

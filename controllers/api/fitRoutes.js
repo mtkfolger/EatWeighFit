@@ -34,7 +34,7 @@ router.get('/:id', withAuth, async (req, res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
-
+console.log('FIT POST')
     try {
         const newFit = await Fit.create({
             ...req.body,
