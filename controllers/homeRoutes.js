@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Weight, Goal } = require('../models');
+const { User, Weight, Goal, Fit, Eat } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -91,5 +91,21 @@ router.get('/weigh', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/fit', withAuth, async (req, res) => {
+    try {
+        const fitData = await Fit.findAll({
+            attributes: { exclude: ['user_id'] },
+            order: [['current_date', 'ASC']],
+        });
+        const fitness = fitData.map((fit) => fit.get({ plain: true }));
+        res.render('fit', {
+            ...fitness,
+            logged_in:true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 module.exports = router;
