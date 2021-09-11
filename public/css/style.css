@@ -1,10 +1,15 @@
-*{
-    color: black;
-
+html {
+    background-image: url('../../images/nutrition.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
+* {
+    color:black;
+}  
+
 .h1 {
-    color: black;
+    color: rgba(255, 153, 0, 0.658) !important;
     padding-bottom: 2em;
     margin-top: 10em;
 
@@ -24,22 +29,7 @@
 }
 
 .button{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    color: ba;
-    background-color: rgba(228, 176, 97, 0.842);
-    margin-left: 23.5em;
-    margin-bottom: .8em;
-    padding: 1em;
-    padding-left: .5em;
-    padding-right: .5em;
-    font-size: medium;
-    font-weight: bolder;
-    opacity: 100%;
-    width: 8vw;
-    border-radius: 30%;
+   background-color: rgba(255, 153, 0, 0.658);
 }
 
 .custom-card-class {
@@ -62,10 +52,19 @@
 }
 
 .uk-card-title{
-    margin-top: 0%
+    margin-top: 0%;
+   color: rgba(255, 153, 0, 0.658)
 }
 
 .footer{
     color: white;
-    font-weight: bolder;
+    font-weight: light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+input {
+    color:black !important;
 }
