@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Weight, Goal, Fit, Eat } = require('../models');
+const { User, Weight, Goal, Fit, Eat, Meal } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -19,33 +19,8 @@ router.get('/', withAuth, async (req, res) => {
         });
 
         const user = weighData.map((userInfo) => userInfo.get({ plain: true }));
-
-
-        const userData = await User.create({
-            name: user.user.name,
-            email: user.user.email,
-            password: user.user.password,
-        });
-
-        const goalData = await Goal.create({
-            ideal_body_type: user.goal.ideal_body_type,
-            current_body_type: user.goal.current_body_type,
-            target_weight: user.goal.target_weight,
-            target_date: user.goal.target_weight,
-        });
-
-        const weightData = await Weight.create({
-            weight: user.weight.weight,
-            age: user.weight.age,
-            height: user.weight.height,
-        }); 
-
-        const userProfile = {userData, goalData, weightData};
-
-        res.status(200).json(userProfile);
-
         res.render('userProfiles', {
-            ...user,
+            user,
             logged_in: true
         });
     } catch (err) {
@@ -82,9 +57,9 @@ router.get('/weigh', withAuth, async (req, res) => {
         });
 
         const weights = weighData.map((weigh) => weigh.get({ plain: true }));
-
+        console.log(weights)
         res.render('weigh', {
-            ...weights,
+            weights,
             logged_in: req.session.logged_in
         });
     } catch (err) {
@@ -98,11 +73,41 @@ router.get('/fit', withAuth, async (req, res) => {
             attributes: { exclude: ['user_id'] },
             order: [['current_date', 'ASC']],
         });
+
         const fitness = fitData.map((fit) => fit.get({ plain: true }));
+        console.log(fitness);
         res.render('fit', {
-            ...fitness,
+            fitness,
             logged_in:true
         });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.get('/eat', async (req, res) => {
+    try {
+        const eatData = await Eat.findAll({
+            include: [
+                {
+                    model: User,
+                    
+                },
+                {
+                    model: Meal,
+                    
+                }
+            ],
+        });
+        
+        const eat = eatData.map((newEat) => newEat.get({ plain: true }));
+        console.log(eat);
+
+        res.render('eat', {
+            eat,
+            logged_in: true,
+        })
+
     } catch (err) {
         res.status(500).json(err);
     }

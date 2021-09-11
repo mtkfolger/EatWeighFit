@@ -18,7 +18,7 @@
 <!-- table will populate here with the food information you've added -->
 {{#if weights.length}}
 {{#each weights as |weight|}}
-        <h3>Your Weight: {{{weight.weight}}}</h3>
+        <h3>Your Weight: {{{weight.weight}}} at {{{weight.current_date}}}</h3>
 {{/each}}
 {{/if}}
     </div>
