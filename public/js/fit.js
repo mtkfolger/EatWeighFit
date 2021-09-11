@@ -17,7 +17,7 @@ function createFit(event) {
 
         if (response.ok) {
             //NEED TO INPUT THE PAGE THIS REDIRECTS TOO
-            document.location.replace('');
+            document.location.replace('/fit');
         } else {
             alert(response.statusText);
         }

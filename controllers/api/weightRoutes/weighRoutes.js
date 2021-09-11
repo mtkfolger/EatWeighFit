@@ -3,11 +3,13 @@ const { Weight, User, Goal } = require('../../../models');
 const withAuth = require('../../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
+    console.log('WEIGH TEST')
     try {
         const weighData = await Weight.findAll({
             include: [
                 {
-                    model: User,  
+                    model: User,
+                    attributes: { exclude: ['password'] },
                 },
                 {
                     model: Goal,
@@ -31,6 +33,11 @@ router.get('/:id', withAuth, async (req, res) => {
                 {
                     model: User,
                     attributes: ['name'],
+                    attributes: { exclude: ['password'] },
+                },
+                {
+                    model: Goal,
+                    attributes: ['target_weight', 'target_date', 'current_body_type', 'ideal_body_type']
                 },
             ],
         });
@@ -44,14 +51,18 @@ router.get('/:id', withAuth, async (req, res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
+    console.log('WEIGHT POST')
+    // console.log(req)
     try {
+        console.log(req.body);
         const newWeight = await Weight.create({
             ...req.body,
             user_id:req.session.user_id,
         });
-
+        console.log(newWeight)
         res.status(200).json(newWeight);
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });

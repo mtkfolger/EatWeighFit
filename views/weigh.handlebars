@@ -4,19 +4,25 @@
     <br>
     <br>
     
-    <div class="uk-card uk-card-secondary uk-card-body custom-card-class">
+    <div class="uk-card uk-card-secondary uk-card-body custom-card-class weigh">
         <h1>Weigh</h1>
         <h3 class="uk-card-title">Log your weight!</h3>
         <p class="p"> 
             Log your weight below:
         </p>
-<input type="text"> lbs
+<input type="text" id="logWeight"> lbs
+
+<!-- login/signup buttons --> 
+<button class="uk-button uk-button-text logWeightBtn"> ⇨ Log weight</button>
 
 <!-- table will populate here with the food information you've added -->
-        <h3>Your Weight: {{{Weight.weight}}}</h3>
-<!-- login/signup buttons --> 
-<button class="uk-button uk-button-text"> ⇨ Log weight</button>
-
+{{#if weights.length}}
+{{#each weights as |weight|}}
+        <h3>Your Weight: {{{weight.weight}}}</h3>
+{{/each}}
+{{/if}}
     </div>
 </div>
 </div>
+
+<script src="./js/weigh.js"></script>

@@ -1,18 +1,6 @@
 const router = require('express').Router();
-const { Goal } = require('../../../models');
-const withAuth = require('../../../utils/auth');
-
-router.get('/', withAuth, async (req, res) => {
-    try {
-        const goalData = await Goal.findAll();
-
-        const goal = goalData.map((goals) => goals.get({ plain: true }));
-
-        res.json(goal);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+const { Goal, Weight } = require('../../../../models');
+const withAuth = require('../../../../utils/auth');
 
 router.get('/:id', withAuth, async (req, res) => {
     try {
@@ -26,7 +14,7 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/:id', withAuth, async (req, res) => {
     try {
         const newGoal = await Goal.create({
             ...req.body,

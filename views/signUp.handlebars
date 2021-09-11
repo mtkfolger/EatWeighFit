@@ -14,17 +14,21 @@
             <br> 
             To create your user profile, fill out the form below: 
         </p>
-    <input type="name" placeholder="Full Name"required>
+    <input type="name" id="name-signup" placeholder="Full Name"required>
     <br>
-    <input type="email" placeholder="E-mail" required>
+    <input type="email" id="email-signup" placeholder="E-mail" required>
     <br>
-    <input type="password" placeholder="Password" required>
+    <input type="password" id='password-signup' placeholder="Password" required>
     <br>
-    <input type="text" placeholder="Height" required>
+    <input type="text" id='height-signup' placeholder="Height" required>
     <br>
-    <input type="text" placeholder="Weight" required>
+    <input type="text" id='weight-signup' placeholder="Weight" required>
     <br>
-    <input type="number" placeholder="Age" required>
+    <input type="number" id='age-signup' placeholder="Age" required>
+    <br>
+    <input type="number" id='target-weight-signup' placeholder="Target_weight" required>
+    <br>
+    <input type="date" id='target-date-signup' placeholder="Target_date" required>
     <br>
     <!--Body Type-->
     <input type="datalist2" list="goal-bodies2" id="body-option2" name="body-option2" placeholder="Current Body Type"/>
@@ -51,8 +55,10 @@
     </datalist>
     <br>
 <!-- login/signup buttons --> 
-<button class="uk-button uk-button-text" url="https://www.google.com" target="#"> ⇨ Sign Up</button>
+<button class="uk-button uk-button-text signup-form"><a href="/signup"> ⇨ Sign Up</a></button>
 
     </div>
 </div>
 </div>
+
+<script src="./js/signup.js"></script>
