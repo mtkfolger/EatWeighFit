@@ -13,7 +13,7 @@ const loginFormHandler = async (event) => {
 
         if (response.ok) {
             //NEED TO INPUT THE PAGE THIS REDIRECTS TOO
-            document.location.replace('');
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
@@ -44,4 +44,3 @@ const signupFormHandler = async (event) => {
 };
 
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);

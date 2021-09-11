@@ -7,7 +7,8 @@ router.get('/', withAuth, async (req, res) => {
         const weighData = await Weight.findAll({
             include: [
                 {
-                    model: User,  
+                    model: User,
+                    attributes: { exclude: ['password'] },
                 },
                 {
                     model: Goal,
@@ -31,6 +32,11 @@ router.get('/:id', withAuth, async (req, res) => {
                 {
                     model: User,
                     attributes: ['name'],
+                    attributes: { exclude: ['password'] },
+                },
+                {
+                    model: Goal,
+                    attributes: ['target_weight', 'target_date', 'current_body_type', 'ideal_body_type']
                 },
             ],
         });
